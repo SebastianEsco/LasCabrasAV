@@ -3,6 +3,6 @@
 ## Integrantes:
 
 - Elena Castaño
-- Sebastián Traperar
+- Sebastián Escobar
 - Valeria Alvarez
 - Miguel García
