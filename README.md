@@ -2,7 +2,7 @@
 
 ## Integrantes:
 
-- Elena Castañeda
-- Sebastián Escobar
+- Elena Castaño
+- Sebastián Escoba
 - Valeria Alvarez
 - Miguel García
