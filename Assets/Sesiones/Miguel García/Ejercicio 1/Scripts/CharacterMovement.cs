@@ -41,7 +41,10 @@ namespace Celeste_Garcia
             speedX.TargetValue = inputValue.x;
             speedY.TargetValue = inputValue.y;
 
-            SolveCharacterRotation();
+            if(inputValue.magnitude > .1f)
+            {
+                SolveCharacterRotation();
+            }
         }
 
         void SolveCharacterRotation()
