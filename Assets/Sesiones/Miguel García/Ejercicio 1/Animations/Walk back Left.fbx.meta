@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09cd668acfbd3444096ca8925a100146
+guid: 696f2db8ecf9fb04fa84cf7ff5d3a17e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walk Back
+      name: Walk back Left
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 45
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
