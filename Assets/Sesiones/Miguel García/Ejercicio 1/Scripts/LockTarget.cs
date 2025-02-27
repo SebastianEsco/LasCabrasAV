@@ -15,6 +15,8 @@ namespace Celeste_Garcia
         {
             if (!ctx.started) return;
 
+            if (parentCharacter.LockTarget != null) { parentCharacter.LockTarget = null; return; }
+
             Collider[] detectedObjects = Physics.OverlapSphere(transform.position, detectionRadius, detectionMask);
 
             if(detectedObjects.Length == 0) return;
