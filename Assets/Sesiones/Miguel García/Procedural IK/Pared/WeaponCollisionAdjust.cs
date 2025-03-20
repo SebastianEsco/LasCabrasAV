@@ -1,3 +1,4 @@
+using Celeste_Garcia;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,16 +13,19 @@ public class WeaponCollisionAdjust : MonoBehaviour
     }
 
     [SerializeField] private Transform HandIK;
+    [SerializeField] AvatarIKGoal triggerHand = AvatarIKGoal.RightHand, holdingHand = AvatarIKGoal.LeftHand;
 
     [SerializeField] private Transform weaponReference;
+    [SerializeField] private Transform weaponBarrier;
     [SerializeField] private float weaponLength;
     [SerializeField] private float profileThickness;
 
     [SerializeField] private LayerMask layerMask;
+    
 
     Animator animator;
     RayResult rayResult;
-    float offset;
+    [SerializeField] FloatDampener offset;
 
     private void Awake()
     {
@@ -35,7 +39,7 @@ public class WeaponCollisionAdjust : MonoBehaviour
 
     private void Update()
     {
-        HandIK.Translate(transform.forward * offset);
+        HandIK.Translate(transform.forward * offset.CurrentValue);
     }
 
     private void SolveOffset()
@@ -45,14 +49,18 @@ public class WeaponCollisionAdjust : MonoBehaviour
         result.result = Physics.SphereCast(result.ray, profileThickness, out result.hitInfo, weaponLength, layerMask);
 
         rayResult = result;
-        offset = Mathf.Max(0,weaponLength - Vector3.Distance(rayResult.hitInfo.point, weaponReference.position));
+        offset.TargetValue = Mathf.Max(0,weaponLength - Vector3.Distance(rayResult.hitInfo.point, weaponReference.position));
     }
 
     private void OnAnimatorIK(int layerIndex)
     {
+        offset.Update();
         Vector3 originalIkPosition = animator.GetIKPosition(AvatarIKGoal.RightHand);
-        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-        animator.SetIKPosition(AvatarIKGoal.RightHand, originalIkPosition + weaponReference.forward * offset);
+        animator.SetIKPositionWeight(triggerHand, 1);
+        animator.SetIKPosition(triggerHand, originalIkPosition + weaponReference.forward * offset.CurrentValue);
+
+        animator.SetIKPositionWeight(holdingHand, 1);
+        animator.SetIKPosition(holdingHand, weaponBarrier.position);
     }
 
 #if UNITY_EDITOR

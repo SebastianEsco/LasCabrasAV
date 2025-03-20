@@ -1025,12 +1025,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HandIK: {fileID: 1379186136}
+  triggerHand: 3
+  holdingHand: 2
   weaponReference: {fileID: 258514345}
   weaponLength: 0.63
   profileThickness: 0.07
   layerMask:
     serializedVersion: 2
     m_Bits: 128
+  offset:
+    smoothTime: 0.2
 --- !u!1 &449652244
 GameObject:
   m_ObjectHideFlags: 0
