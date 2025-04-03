@@ -83,7 +83,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
             {
                 Debug.Log("Jump");
                 animator.SetTrigger("Jump");
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                //rb.AddForce(Vector3.up * jumpForce + Vector3.forward * jumpForce/2, ForceMode.Impulse);
             }
             
             
@@ -111,7 +111,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        rb = GetComponentInParent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         speedXHash = Animator.StringToHash(name: "SpeedX");
         speedYHash = Animator.StringToHash(name: "SpeedY");
     }
@@ -121,6 +121,14 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
     private void Update()
     {
         animator.SetBool("Grounded", IsGrounded());
+        if (!IsGrounded() && rb.velocity.y < -0.5f)
+        {
+            animator.applyRootMotion = false;
+        }
+        else
+        {
+            animator.applyRootMotion= true;
+        }
         speedX.Update();
         speedY.Update();
 
