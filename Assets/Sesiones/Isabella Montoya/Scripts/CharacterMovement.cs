@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
+using UnityEngine.XR;
 
 [RequireComponent(typeof(Animator))] 
 public class CharacterMovement : MonoBehaviour, ICharacterComponent
@@ -13,6 +15,11 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
     [SerializeField] private float angularSpeed;
     [SerializeField] private Transform aimTarget;
     [SerializeField] private float rotationTreshold;
+
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float jumpForce;
+    Rigidbody rb;
 
     private Animator animator;
 
@@ -72,15 +79,39 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
     {
         if (ctx.performed)
         {
-            Debug.Log("Jump");
-            animator.SetTrigger("Jump");
+            if (IsGrounded())
+            {
+                Debug.Log("Jump");
+                animator.SetTrigger("Jump");
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            
             
         }
     }
 
+    private bool IsGrounded()
+    {
+        // Lanza un Raycast hacia abajo desde el centro del personaje
+        bool hit = Physics.Raycast(
+            transform.position + Vector3.up * 0.5f,
+            Vector3.down,
+            groundCheckDistance,
+            groundLayer
+        );
+
+        // Opcional: Dibuja el Raycast en el Editor (solo para debugging)
+        Debug.DrawRay(transform.position + Vector3.up * 0.5f, Vector3.down * groundCheckDistance, Color.red);
+
+        return hit;
+    }
+
+
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponentInParent<Rigidbody>();
         speedXHash = Animator.StringToHash(name: "SpeedX");
         speedYHash = Animator.StringToHash(name: "SpeedY");
     }
@@ -89,6 +120,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
 
     private void Update()
     {
+        animator.SetBool("Grounded", IsGrounded());
         speedX.Update();
         speedY.Update();
 

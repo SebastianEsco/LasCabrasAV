@@ -588,7 +588,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 93f16b7f82bf9d44f9a1a864d8fe9f5a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: 93f16b7f82bf9d44f9a1a864d8fe9f5a,
         type: 3}
@@ -773,18 +773,6 @@ CapsuleCollider:
   m_Height: 1.8161263
   m_Direction: 1
   m_Center: {x: 0.012548119, y: 0.9145148, z: 0}
---- !u!114 &464491239 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4258989734909471763, guid: 0a880a74de0699b4ebf19f981aef860e,
-    type: 3}
-  m_PrefabInstance: {fileID: 805064479}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &515580858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,18 +1097,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7898381343099797946}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1171105149 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1476859418929138528, guid: 60f0aaf1a8110ad49a87251c82a06563,
-    type: 3}
-  m_PrefabInstance: {fileID: 7898381343099797946}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1288676087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,7 +1169,7 @@ GameObject:
   - component: {fileID: 1421152687}
   - component: {fileID: 1421152686}
   - component: {fileID: 1421152685}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: piso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1481,6 +1457,12 @@ MonoBehaviour:
   angularSpeed: 90
   aimTarget: {fileID: 1812911024}
   rotationTreshold: 360
+  groundCheckDistance: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  mesh: {fileID: 0}
+  jumpForce: 0
 --- !u!114 &1678880119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,12 +1505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f419c3e1b0953e64cb50dd898115e541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimingCamera: {fileID: 1171105149}
-  aimConstraint: {fileID: 2002979460}
-  aimDampener:
-    smoothTime: 0.1
-    currentValue: 0
-    <TargetValue>k__BackingField: 0
 --- !u!114 &1678880122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,6 +1568,65 @@ CapsuleCollider:
   m_Height: 1.6475216
   m_Direction: 1
   m_Center: {x: 0.03137207, y: 0.822823, z: 0}
+--- !u!1 &1806502956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1806502957}
+  - component: {fileID: 1806502958}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1806502957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806502956}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1773428102 &1806502958
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806502956}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationAtRest: {x: 0, y: 180, z: 0}
+  m_TranslationOffsets:
+  - {x: 0.001615849, y: -1.0613285, z: -0.0101117855}
+  m_RotationOffsets:
+  - {x: 0, y: 180, z: -0.00013447313}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 1943305234175624144}
+    weight: 1
 --- !u!1 &1812911023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,12 +1846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f419c3e1b0953e64cb50dd898115e541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimingCamera: {fileID: 464491239}
-  aimConstraint: {fileID: 2002979460}
-  aimDampener:
-    smoothTime: 0.1
-    currentValue: 0
-    <TargetValue>k__BackingField: 0
 --- !u!114 &1816075954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3847,7 +3876,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6931243729926476294}
   - component: {fileID: 6568701212975250418}
-  - component: {fileID: 6931243729926476296}
   - component: {fileID: 6931243729926476295}
   m_Layer: 0
   m_Name: vanguard_Mesh
@@ -4844,6 +4872,12 @@ MonoBehaviour:
   angularSpeed: 90
   aimTarget: {fileID: 2106155015}
   rotationTreshold: 360
+  groundCheckDistance: 0.65
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  mesh: {fileID: 8419608963093096605}
+  jumpForce: 2
 --- !u!1 &5107810449664570404
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,7 +4970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8419608963093096605}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5867,34 +5901,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8202280900003221961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &6931243729926476295
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3752852038295948395}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!136 &6931243729926476296
+--- !u!136 &6931243729926476295
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6720,7 +6727,7 @@ PrefabInstance:
     - target: {fileID: 3051378494841733515, guid: 60f0aaf1a8110ad49a87251c82a06563,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7316664
+      value: -1.4791238
       objectReference: {fileID: 0}
     - target: {fileID: 3051378494841733515, guid: 60f0aaf1a8110ad49a87251c82a06563,
         type: 3}
@@ -7394,7 +7401,19 @@ MonoBehaviour:
     m_ActionId: 63c3ee6c-3881-404d-a002-3da8e8d788ac
     m_ActionName: Character/WeaponAction[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5073685199779617336}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f93e86b5-9881-4e20-a3dd-b46bcba3c9ff
     m_ActionName: Character/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
@@ -7581,6 +7600,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5348253728401979447}
   - component: {fileID: 7701221339297490304}
+  - component: {fileID: 8419608963093096607}
+  - component: {fileID: 8419608963093096606}
   m_Layer: 0
   m_Name: Vanguard
   m_TagString: Untagged
@@ -7588,6 +7609,56 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!136 &8419608963093096606
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419608963093096605}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 1.9495806
+  m_Direction: 1
+  m_Center: {x: 0.00009201758, y: 0.8570693, z: -0.0061247954}
+--- !u!54 &8419608963093096607
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419608963093096605}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &8446770533031727734
 GameObject:
   m_ObjectHideFlags: 0
@@ -8015,7 +8086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f575186ad2a83245b1de9e5f0105ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1753183686169349074}
+  target: {fileID: 6931243729926476294}
   horizontalDampener:
     smoothTime: 0.1
     currentValue: 0
@@ -8067,13 +8138,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8835934556085914483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f419c3e1b0953e64cb50dd898115e541, type: 3}
+  m_Script: {fileID: 11500000, guid: eca711779894ec342a05cee6226bdcf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   aimingCamera: {fileID: 1093006659047605293}
   aimConstraint: {fileID: 4943691866711386133}
   aimDampener:
-    smoothTime: 0.1
+    smoothTime: 0
     currentValue: 0
     <TargetValue>k__BackingField: 0
 --- !u!1 &9117406005104297807
@@ -8177,8 +8248,9 @@ SceneRoots:
   - {fileID: 1421152688}
   - {fileID: 375618342}
   - {fileID: 7898381343099797946}
-  - {fileID: 5348253728401979447}
+  - {fileID: 1806502957}
   - {fileID: 1288676089}
   - {fileID: 106585426}
   - {fileID: 27556967}
   - {fileID: 6244332266411811652}
+  - {fileID: 5348253728401979447}
