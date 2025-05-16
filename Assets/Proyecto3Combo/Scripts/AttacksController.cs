@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AttacksController : MonoBehaviour
 {
@@ -19,21 +20,27 @@ public class AttacksController : MonoBehaviour
 
     void Update()
     {
-        // Buffer de input
-        if (Input.GetMouseButtonDown(0))
-        {
-            inputBuffered = TipoDeAtaque.Ligero;
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            inputBuffered = TipoDeAtaque.Pesado;
-        }
-
         // Solo podemos iniciar ataque si no estamos atacando ni esperando combo
         if (!estaAtacando && !esperandoCombo && inputBuffered != null)
         {
             IntentarIniciarAtaque(inputBuffered.Value);
             inputBuffered = null;
+        }
+    }
+
+    public void OnAtaqueLigero(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            inputBuffered = TipoDeAtaque.Ligero;
+        }
+    }
+
+    public void OnAtaquePesado(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            inputBuffered = TipoDeAtaque.Pesado;
         }
     }
 
@@ -95,21 +102,27 @@ public class AttacksController : MonoBehaviour
 
     IEnumerator ControlarTransicion(Attack ataque)
     {
+        estaAtacando = true;
+        esperandoCombo = false;
+
+        // Crossfade al ataque
+        animator.CrossFade(ataque.animacion.name, 0.125f);
         yield return new WaitForSeconds(ataque.animacion.length);
 
         estaAtacando = false;
         esperandoCombo = true;
 
-        float tiempoCombo = ataque.tiempoParaCombo;
+        // 👉 Ir a Idle mientras esperamos si hay combo
+        animator.CrossFade("Idle", 0.15f);
+
         float contador = 0f;
+        float tiempoCombo = ataque.tiempoParaCombo;
 
         while (contador < tiempoCombo)
         {
             if (inputBuffered != null)
             {
                 IntentarIniciarAtaque(inputBuffered.Value);
-                esperandoCombo = false;
-                comboCoroutine = null;
                 yield break;
             }
 
@@ -117,7 +130,7 @@ public class AttacksController : MonoBehaviour
             yield return null;
         }
 
-        // Tiempo agotado: volver a idle
+        // Si pasó el tiempo y no hubo input válido, limpiar estado
         LimpiarEstado();
     }
 

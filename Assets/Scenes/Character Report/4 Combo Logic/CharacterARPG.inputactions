@@ -45,7 +45,7 @@
                     "name": "LightAttack",
                     "type": "Button",
                     "id": "63c3ee6c-3881-404d-a002-3da8e8d788ac",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

@@ -45,7 +45,7 @@
                     "name": "WeaponAction",
                     "type": "Button",
                     "id": "63c3ee6c-3881-404d-a002-3da8e8d788ac",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -54,6 +54,24 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "f93e86b5-9881-4e20-a3dd-b46bcba3c9ff",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AtaqueLigero",
+                    "type": "Button",
+                    "id": "e86ebe28-1242-4535-af4d-4643ebb334ea",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AtaquePesado",
+                    "type": "Button",
+                    "id": "87f54e2f-56ef-4481-b20b-382932439125",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -179,6 +197,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba21e64d-6548-42e1-a13f-e518ba2ffec4",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AtaqueLigero",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea2bec2f-b3ff-4ce5-b4ec-4b407a5c660c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AtaquePesado",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
