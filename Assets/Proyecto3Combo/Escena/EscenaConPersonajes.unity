@@ -137,48 +137,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db1684766b421d4aa64015b43730b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allAttacks:
-  - attackName: AtaqueLigero1
-    animation: {fileID: 7400000, guid: b27ecb39674b6d14b97905baca884337, type: 2}
-    comboWindow: 1.5
-    attackType: 0
-    possibleNextAttacks:
-    - AtaqueLigero2
-    requiredPreviousAttacks: []
-    minExitTime: 0.95
-    recoveryTime: 0.2
-  - attackName: AtaqueLigero2
-    animation: {fileID: 7400000, guid: 986076c2b5166d748bdaaf57eb31c767, type: 2}
-    comboWindow: 1.75
-    attackType: 0
-    possibleNextAttacks:
+  ataquesDisponibles:
+  - nombre: AtaqueLigero1
+    tipo: 0
+    animacion: {fileID: 7400000, guid: b27ecb39674b6d14b97905baca884337, type: 2}
+    tiempoParaCombo: 1
+    ataquesSiguientes:
+    - Nueva2
+    ataquesRequeridos: []
+  - nombre: Nueva2
+    tipo: 0
+    animacion: {fileID: 7400000, guid: e53c716af2ecfcc49b162186c7ef74ae, type: 2}
+    tiempoParaCombo: 1
+    ataquesSiguientes:
     - AtaquePesado2
-    requiredPreviousAttacks:
+    ataquesRequeridos:
     - AtaqueLigero1
-    minExitTime: 0.95
-    recoveryTime: 0.2
-  - attackName: AtaquePesado1
-    animation: {fileID: 7400000, guid: 215ef77e502ad16429b10a6ee5812ea4, type: 2}
-    comboWindow: 1.75
-    attackType: 1
-    possibleNextAttacks:
+  - nombre: AtaquePesado1
+    tipo: 1
+    animacion: {fileID: 7400000, guid: 215ef77e502ad16429b10a6ee5812ea4, type: 2}
+    tiempoParaCombo: 1
+    ataquesSiguientes:
     - AtaquePesado2
-    requiredPreviousAttacks: []
-    minExitTime: 0.95
-    recoveryTime: 0.2
-  - attackName: AtaquePesado2
-    animation: {fileID: 7400000, guid: 66c2a304fd3c77b45ac353db527b84a0, type: 2}
-    comboWindow: 1.75
-    attackType: 1
-    possibleNextAttacks: []
-    requiredPreviousAttacks:
+    ataquesRequeridos: []
+  - nombre: AtaquePesado2
+    tipo: 1
+    animacion: {fileID: 7400000, guid: 66c2a304fd3c77b45ac353db527b84a0, type: 2}
+    tiempoParaCombo: 1
+    ataquesSiguientes: []
+    ataquesRequeridos:
     - AtaquePesado1
-    - AtaqueLigero2
-    minExitTime: 0.95
-    recoveryTime: 0.2
-  attackBufferTime: 0.1
-  lightAttackKey: 323
-  heavyAttackKey: 32
+    - Nueva2
+  animator: {fileID: 479315818}
+--- !u!95 &479315818 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2797128042715000852, guid: b70b99e5a8a474b438e08193e49ee63d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1133594152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &479315819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8084324127356381806, guid: b70b99e5a8a474b438e08193e49ee63d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1133594152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &515580858
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +453,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 479315819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1133594152
 PrefabInstance:
@@ -553,7 +555,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8084324127356381806, guid: b70b99e5a8a474b438e08193e49ee63d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 811865946}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8897592628040839380, guid: b70b99e5a8a474b438e08193e49ee63d,
         type: 3}
@@ -798,4 +804,3 @@ SceneRoots:
   - {fileID: 1813787633}
   - {fileID: 1421152688}
   - {fileID: 1133594152}
-  - {fileID: 811865946}

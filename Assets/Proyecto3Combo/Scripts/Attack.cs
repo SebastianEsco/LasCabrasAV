@@ -1,16 +1,18 @@
 using UnityEngine;
+using System.Collections.Generic;
+public enum TipoDeAtaque { Ligero, Pesado }
+
 [System.Serializable]
 public class Attack
 {
-    public string attackName;
-    public AnimationClip animation;
-    public float comboWindow = 0.5f;
-    public AttackType attackType;
-    public string[] possibleNextAttacks;
-    public string[] requiredPreviousAttacks;
-    [Range(0.7f, 1f)] public float minExitTime = 0.95f;
-    public float recoveryTime = 0.2f;
-    
+    public string nombre;
+    public TipoDeAtaque tipo;
+    public AnimationClip animacion;
+    public float tiempoParaCombo = 0.5f;
 
-    public enum AttackType { Light, Heavy }
+    [Tooltip("Ataques que pueden venir justo después de este")]
+    public List<string> ataquesSiguientes;
+
+    [Tooltip("Ataques que deben haberse hecho antes para permitir este")]
+    public List<string> ataquesRequeridos;
 }
