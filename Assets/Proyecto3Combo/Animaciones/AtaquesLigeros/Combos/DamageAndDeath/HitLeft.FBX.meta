@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c1efb4ad0ee896743b07c8057b54cbdb
+guid: 7f2fc69c56b206841adebb7b0e167570
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -326,7 +326,7 @@ ModelImporter:
     3300000: Grru_Katana
     4300000: Grruzam_Base_Modeling
     4300002: Grru_Katana
-    7400000: Attack_3Combo_ALL
+    7400000: Damage_Left_Small_ver_A
     9500000: //RootNode
     13700000: Grruzam_Base_Modeling
     2186277476908879412: ImportLogs
@@ -345,10 +345,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'thigh_l'
-      : position error = 19.923891 mm\n\t'calf_l' : position error = 6.071052 mm\n\t'foot_l'
-      : position error = 9.539584 mm\n\t'ball_l' : position error = 6.825891 mm\n\t'thigh_r'
-      : position error = 19.551815 mm\n\t'calf_r' : position error = 15.635414 mm\n\t'foot_r'
-      : position error = 13.306231 mm\n\t'ball_r' : position error = 8.973481 mm\n"
+      : position error = 19.923874 mm\n\t'calf_l' : position error = 6.071118 mm\n\t'foot_l'
+      : position error = 9.539585 mm\n\t'ball_l' : position error = 6.825994 mm\n\t'thigh_r'
+      : position error = 19.551826 mm\n\t'calf_r' : position error = 15.638973 mm\n\t'foot_r'
+      : position error = 13.309067 mm\n\t'ball_r' : position error = 8.973460 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
@@ -406,10 +406,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Attack_3Combo_ALL
+      name: Damage_Left_Small_ver_A
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 110
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -419,7 +419,7 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
@@ -1398,10 +1398,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 183324
-  packageName: Powerful Sword Pack(Great Sword + Katana)
-  packageVersion: 2.1.1
-  assetPath: Assets/Grruzam Powerful Sword Animation(Great Sword, Katana)/Animation/M_Katana_Blade/2_Attacks/0__3Combos/M_katana_Blade@Attack_3Combo_ALL.FBX
-  uploadId: 737837

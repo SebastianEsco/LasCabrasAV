@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,9 +8,15 @@ public class AttacksController : MonoBehaviour
 {
     [Header("Configuración de ataques disponibles")]
     public List<Attack> ataquesDisponibles;
+    
 
     [Header("Animación")]
     public Animator animator;
+
+    [Header("UI input (Opcional)")] public TextMeshProUGUI texto;
+    
+    [Header("Health System")]
+    public HealthSystem healthSystem;
 
     private bool estaAtacando = false;
     private bool esperandoCombo = false;
@@ -20,6 +27,10 @@ public class AttacksController : MonoBehaviour
 
     void Update()
     {
+        if (healthSystem?.IsDead == true)
+        {
+            return;
+        }
         // Solo podemos iniciar ataque si no estamos atacando ni esperando combo
         if (!estaAtacando && !esperandoCombo && inputBuffered != null)
         {
@@ -33,6 +44,7 @@ public class AttacksController : MonoBehaviour
         if (context.performed)
         {
             inputBuffered = TipoDeAtaque.Ligero;
+            if (texto != null) texto.text = "Click Izquierdo - Ligero ";
         }
     }
 
@@ -41,12 +53,13 @@ public class AttacksController : MonoBehaviour
         if (context.performed)
         {
             inputBuffered = TipoDeAtaque.Pesado;
+            if (texto != null) texto.text = "Click Derecho - Pesado ";
         }
     }
 
     void IntentarIniciarAtaque(TipoDeAtaque tipo)
     {
-        // Si estamos en combo, buscar continuación
+        
         if (ataqueActual != null)
         {
             var posibles = ataqueActual.ataquesSiguientes;
@@ -105,34 +118,37 @@ public class AttacksController : MonoBehaviour
         estaAtacando = true;
         esperandoCombo = false;
 
-        // Crossfade al ataque
         animator.CrossFade(ataque.animacion.name, 0.125f);
-        yield return new WaitForSeconds(ataque.animacion.length);
 
-        estaAtacando = false;
-        esperandoCombo = true;
+        float tiempoAnimacion = ataque.animacion.length;
+        float tiempoCancelacion = tiempoAnimacion * ataque.puntoDeCancelacion;
 
-        // 👉 Ir a Idle mientras esperamos si hay combo
-        animator.CrossFade("Idle", 0.15f);
+        float tiempoTranscurrido = 0f;
+        bool inputPermitido = false;
 
-        float contador = 0f;
-        float tiempoCombo = ataque.tiempoParaCombo;
-
-        while (contador < tiempoCombo)
+        while (tiempoTranscurrido < tiempoAnimacion)
         {
-            if (inputBuffered != null)
+            if (!inputPermitido && tiempoTranscurrido >= tiempoCancelacion)
             {
-                IntentarIniciarAtaque(inputBuffered.Value);
-                yield break;
+                inputPermitido = true;
+                esperandoCombo = true;
             }
 
-            contador += Time.deltaTime;
+            if (inputPermitido && inputBuffered != null)
+            {
+                IntentarIniciarAtaque(inputBuffered.Value);
+                yield break; // Se cancela esta animación para ir a la siguiente
+            }
+
+            tiempoTranscurrido += Time.deltaTime;
             yield return null;
         }
 
-        // Si pasó el tiempo y no hubo input válido, limpiar estado
+        // Terminó la animación completa y no hubo input válido
         LimpiarEstado();
     }
+
+
 
     void LimpiarEstado()
     {

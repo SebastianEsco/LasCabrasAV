@@ -17,7 +17,10 @@ public class HealthSystem : MonoBehaviour
 
     private int vidaActual;
     private bool estaMuerto = false;
+    public bool IsDead => estaMuerto;
     private bool puedeRecibirDanio = true;
+    
+   
 
     void Start()
     {
@@ -44,7 +47,6 @@ public class HealthSystem : MonoBehaviour
     {
         puedeRecibirDanio = false;
 
-        // Calcular dirección del golpe
         Vector3 direccionDelGolpe = (origen - hipsRef.transform.position);
         direccionDelGolpe.y = 0f; 
         direccionDelGolpe.Normalize();
