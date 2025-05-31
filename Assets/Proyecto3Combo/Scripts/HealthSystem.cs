@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -19,12 +21,19 @@ public class HealthSystem : MonoBehaviour
     private bool estaMuerto = false;
     public bool IsDead => estaMuerto;
     private bool puedeRecibirDanio = true;
-    
+
+    public Slider vidaSlider;
    
 
     void Start()
     {
         vidaActual = vidaMaxima;
+        if(vidaSlider != null)  vidaSlider.value = ((float)vidaActual / vidaMaxima);
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void DamageDone(int cantidad, Vector3 origen)
@@ -32,6 +41,7 @@ public class HealthSystem : MonoBehaviour
         if (!puedeRecibirDanio || estaMuerto) return;
 
         vidaActual -= cantidad;
+        if(vidaSlider != null)  vidaSlider.value = ((float)vidaActual / vidaMaxima);
 
         if (vidaActual <= 0)
         {
@@ -63,7 +73,7 @@ public class HealthSystem : MonoBehaviour
         yield return new WaitForSeconds(duracion);
 
         // Volver a Idle
-        animator.CrossFade("Idle", 0.1f);
+        animator.CrossFade("LocoMotion", 0.1f);
 
         puedeRecibirDanio = true;
     }
@@ -109,6 +119,7 @@ public class HealthSystem : MonoBehaviour
         vidaActual = vidaMaxima;
         estaMuerto = false;
         puedeRecibirDanio = true;
+        if(vidaSlider != null)  vidaSlider.value = ((float)vidaActual / vidaMaxima);
 
         // Reiniciar animación
         animator.SetBool("IsAlive", true);

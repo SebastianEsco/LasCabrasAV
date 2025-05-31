@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class AttacksController : MonoBehaviour
 {
     [Header("Configuración de ataques disponibles")]
     public List<Attack> ataquesDisponibles;
+    
+    [Header("Estadísticas")]
+    public float estaminaMaxima = 100f;
+    public float estaminaActual = 100f;
+    public float velocidadRecuperacionEstamina = 15f; // estamina por segundo
     
 
     [Header("Animación")]
@@ -24,6 +30,9 @@ public class AttacksController : MonoBehaviour
 
     private TipoDeAtaque? inputBuffered = null;
     private Coroutine comboCoroutine = null;
+    
+    
+    [SerializeField] private Slider estaminaSlider;
 
     void Update()
     {
@@ -37,6 +46,15 @@ public class AttacksController : MonoBehaviour
             IntentarIniciarAtaque(inputBuffered.Value);
             inputBuffered = null;
         }
+        
+        // Recuperar estamina solo si no estamos atacando
+        if (!estaAtacando && estaminaActual < estaminaMaxima)
+        {
+            estaminaActual += velocidadRecuperacionEstamina * Time.deltaTime;
+            estaminaActual = Mathf.Min(estaminaActual, estaminaMaxima);
+        }
+        
+        if(estaminaSlider != null) estaminaSlider.value = estaminaActual/100;
     }
 
     public void OnAtaqueLigero(InputAction.CallbackContext context)
@@ -94,6 +112,17 @@ public class AttacksController : MonoBehaviour
 
     void EjecutarAtaque(Attack ataque)
     {
+        // Verificar si hay estamina suficiente
+        if (estaminaActual < ataque.estaminaRequerida)
+        {
+            Debug.Log("No hay suficiente estamina para el ataque: " + ataque.nombre);
+            LimpiarEstado(); // opcional: fuerza volver a idle
+            return;
+        }
+
+        // Consumir estamina
+        estaminaActual -= ataque.estaminaRequerida;
+
         // Cancelar corrutina previa si la hay
         if (comboCoroutine != null)
         {
@@ -107,18 +136,19 @@ public class AttacksController : MonoBehaviour
 
         if (ataque.animacion != null)
         {
-            animator.CrossFade(ataque.animacion.name, 0.1f);
+            animator.CrossFade(ataque.animacion.name, 0.1f, 0, 0f);
         }
 
         comboCoroutine = StartCoroutine(ControlarTransicion(ataque));
     }
+
 
     IEnumerator ControlarTransicion(Attack ataque)
     {
         estaAtacando = true;
         esperandoCombo = false;
 
-        animator.CrossFade(ataque.animacion.name, 0.125f);
+        animator.CrossFade(ataque.animacion.name, 0.125f,0,0f);
 
         float tiempoAnimacion = ataque.animacion.length;
         float tiempoCancelacion = tiempoAnimacion * ataque.puntoDeCancelacion;
@@ -155,10 +185,9 @@ public class AttacksController : MonoBehaviour
         ataqueActual = null;
         estaAtacando = false;
         esperandoCombo = false;
-        inputBuffered = null;
-        comboCoroutine = null;
+        inputBuffered = null; comboCoroutine = null;
 
-        animator.CrossFade("Idle", 0.1f);
+        animator.CrossFade("LocoMotion", 0.1f,0,0f);
     }
 
     bool CumpleRequisitos(Attack ataque)

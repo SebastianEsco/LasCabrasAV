@@ -1,24 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackHitbox : MonoBehaviour, IDamageSender<DamageMessage>
+public class AttackHitbox : MonoBehaviour
 {
+    public Collider collider;
+    private int damageToApply;
+    public string targetTag;
+    public Transform emisorDeDaño;
+    private void Awake()
+    {
+        collider.isTrigger = true;
+    }
 
-    [SerializeField] private DamageMessage damageMessage;
-
+    public void ToggleAttackHitbox(int damage)
+    {
+        collider.enabled = !collider.enabled;
+        damageToApply = damage;
+        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out IDamageReceiver<DamageMessage> receiver))
+        if (other.CompareTag(targetTag))
         {
-            SendDamage(receiver);
+            other.GetComponentInParent<EnemyHealthSystem>()?.DamageDone(damageToApply);
+            other.GetComponentInParent<HealthSystem>()?.DamageDone(damageToApply, transform.position);
         }
-    }
-    public void SendDamage(IDamageReceiver<DamageMessage> receiver)
-    {
         
-        receiver.ReceiveDamage(damageMessage);
     }
- 
 }

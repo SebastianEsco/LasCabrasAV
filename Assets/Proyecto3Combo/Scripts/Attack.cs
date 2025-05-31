@@ -19,4 +19,7 @@ public class Attack
 
     [Tooltip("Ataques que deben haberse hecho antes para permitir este")]
     public List<string> ataquesRequeridos;
+
+    [Tooltip("Cuánta estamina requiere este ataque")]
+    public float estaminaRequerida = 10f;
 }

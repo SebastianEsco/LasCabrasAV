@@ -43,7 +43,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
 
         float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
 
-        // Evita la rotación si no hay entrada de movimiento
+        // Evita la rotaciï¿½n si no hay entrada de movimiento
         if (motionMagnitude < 0.01f) return;
 
         float rotationSpeed = ParentCharacter.IsAiming ? 1 : Mathf.SmoothStep(0, .1f, motionMagnitude);
@@ -66,6 +66,11 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
         speedX.TargetValue = inputValue.x;
         speedY.TargetValue = inputValue.y;   
 
+    }
+
+    public void OnJump(InputAction.CallbackContext ctx)
+    {
+        if(ctx.performed) animator.SetTrigger("Jump");
     }
 
     private void Awake()

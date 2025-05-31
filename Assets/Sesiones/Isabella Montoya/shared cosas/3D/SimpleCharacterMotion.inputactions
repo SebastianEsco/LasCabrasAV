@@ -33,24 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Aim",
-                    "type": "Button",
-                    "id": "c86c9025-276d-41e7-8a2c-243bad74ff0a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "WeaponAction",
-                    "type": "Button",
-                    "id": "63c3ee6c-3881-404d-a002-3da8e8d788ac",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "f93e86b5-9881-4e20-a3dd-b46bcba3c9ff",
@@ -164,28 +146,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Lock",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f8447159-12ec-4e81-a7f4-1a433d78b41c",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "add1d28e-4b3b-47e7-9a06-e6fcfe7be8c9",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

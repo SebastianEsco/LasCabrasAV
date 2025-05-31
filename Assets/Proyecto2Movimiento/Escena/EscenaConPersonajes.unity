@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -42,8 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -96,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1395,7 +1392,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 5dae16a9-9b55-4cdf-a4d9-bccddeb3d96b
-    m_ActionName: Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: 'Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327362494}
@@ -1411,7 +1408,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: bb2ad8ca-ac00-4d32-b995-0a8e9f5905c2
-    m_ActionName: Character/Look[/Mouse/delta]
+    m_ActionName: 'Character/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327362493}
@@ -1427,7 +1424,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 1be28db6-c5d5-4b19-a226-272915973ebe
-    m_ActionName: Character/Lock[/Mouse/middleButton]
+    m_ActionName: 'Character/Lock[/Mouse/middleButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327362492}
@@ -1443,7 +1440,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: c86c9025-276d-41e7-8a2c-243bad74ff0a
-    m_ActionName: Character/Aim[/Mouse/rightButton]
+    m_ActionName: 'Character/Aim[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327362491}
@@ -1459,7 +1456,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 63c3ee6c-3881-404d-a002-3da8e8d788ac
-    m_ActionName: Character/WeaponAction[/Mouse/leftButton]
+    m_ActionName: 'Character/WeaponAction[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 327362496}
@@ -1475,7 +1472,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: f93e86b5-9881-4e20-a3dd-b46bcba3c9ff
-    m_ActionName: Character/Jump[/Keyboard/space]
+    m_ActionName: 'Character/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Character
@@ -1505,11 +1502,6 @@ MonoBehaviour:
   angularSpeed: 90
   aimTarget: {fileID: 494101115}
   rotationTreshold: 360
-  groundCheckDistance: 0.5
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  jumpForce: 2
 --- !u!1 &339150833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,7 +1586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &360127693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2371,7 +2363,7 @@ Transform:
   m_GameObject: {fileID: 388321622}
   serializedVersion: 2
   m_LocalRotation: {x: 0.006458546, y: -0.000000017584803, z: 0.0000007343956, w: 0.99997914}
-  m_LocalPosition: {x: 0.7599994, y: 0.6412109, z: -1.121711}
+  m_LocalPosition: {x: 0.7616129, y: 0.6671288, z: -1.1447783}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3849,6 +3841,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5564,6 +5559,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6178,7 +6176,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 5dae16a9-9b55-4cdf-a4d9-bccddeb3d96b
-    m_ActionName: Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: 'Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1679473495}
@@ -6194,7 +6192,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: bb2ad8ca-ac00-4d32-b995-0a8e9f5905c2
-    m_ActionName: Character/Look[/Mouse/delta]
+    m_ActionName: 'Character/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1679473494}
@@ -6210,7 +6208,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 1be28db6-c5d5-4b19-a226-272915973ebe
-    m_ActionName: Character/Lock[/Mouse/middleButton]
+    m_ActionName: 'Character/Lock[/Mouse/middleButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1679473493}
@@ -6226,7 +6224,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: c86c9025-276d-41e7-8a2c-243bad74ff0a
-    m_ActionName: Character/Aim[/Mouse/rightButton]
+    m_ActionName: 'Character/Aim[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1679473492}
@@ -6242,7 +6240,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 63c3ee6c-3881-404d-a002-3da8e8d788ac
-    m_ActionName: Character/WeaponAction[/Mouse/leftButton]
+    m_ActionName: 'Character/WeaponAction[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1679473496}
@@ -6258,7 +6256,15 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: f93e86b5-9881-4e20-a3dd-b46bcba3c9ff
-    m_ActionName: Character/Jump[/Keyboard/space]
+    m_ActionName: 'Character/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e86ebe28-1242-4535-af4d-4643ebb334ea
+    m_ActionName: 'Character/AtaqueLigero[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 87f54e2f-56ef-4481-b20b-382932439125
+    m_ActionName: 'Character/AtaquePesado[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Character
@@ -6361,11 +6367,6 @@ MonoBehaviour:
   angularSpeed: 90
   aimTarget: {fileID: 1731401158}
   rotationTreshold: 360
-  groundCheckDistance: 0.5
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  jumpForce: 2
 --- !u!1 &1685128631
 GameObject:
   m_ObjectHideFlags: 0
@@ -6732,9 +6733,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813787631}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -6784,8 +6784,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &1813787633
 Transform:
   m_ObjectHideFlags: 0
@@ -7330,7 +7334,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 5dae16a9-9b55-4cdf-a4d9-bccddeb3d96b
-    m_ActionName: Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: 'Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -7346,7 +7350,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: bb2ad8ca-ac00-4d32-b995-0a8e9f5905c2
-    m_ActionName: Character/Look[/Mouse/delta]
+    m_ActionName: 'Character/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -7362,7 +7366,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 1be28db6-c5d5-4b19-a226-272915973ebe
-    m_ActionName: Character/Lock[/Mouse/middleButton]
+    m_ActionName: 'Character/Lock[/Mouse/middleButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -7378,7 +7382,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: c86c9025-276d-41e7-8a2c-243bad74ff0a
-    m_ActionName: Character/Aim[/Mouse/rightButton]
+    m_ActionName: 'Character/Aim[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -7394,7 +7398,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 63c3ee6c-3881-404d-a002-3da8e8d788ac
-    m_ActionName: Character/WeaponAction[/Mouse/leftButton]
+    m_ActionName: 'Character/WeaponAction[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
@@ -7410,7 +7414,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: f93e86b5-9881-4e20-a3dd-b46bcba3c9ff
-    m_ActionName: Character/Jump[/Keyboard/space]
+    m_ActionName: 'Character/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Character
@@ -8040,6 +8044,9 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 3
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10137,6 +10144,9 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 3
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10303,7 +10313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2299545628420095943
 Transform:
   m_ObjectHideFlags: 0
@@ -10955,7 +10965,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2825014609655892915
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10969,6 +10979,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -13202,6 +13213,9 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 3
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13640,11 +13654,6 @@ MonoBehaviour:
   angularSpeed: 90
   aimTarget: {fileID: 2106155015}
   rotationTreshold: 360
-  groundCheckDistance: 0.65
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  jumpForce: 2
 --- !u!4 &5079702428217175251
 Transform:
   m_ObjectHideFlags: 0
@@ -13691,7 +13700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!95 &5112153279281374250
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13705,6 +13714,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -13824,7 +13834,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 5dae16a9-9b55-4cdf-a4d9-bccddeb3d96b
-    m_ActionName: Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: 'Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5112153279281374254}
@@ -13840,7 +13850,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: bb2ad8ca-ac00-4d32-b995-0a8e9f5905c2
-    m_ActionName: Character/Look[/Mouse/delta]
+    m_ActionName: 'Character/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5112153279281374254}
@@ -13856,7 +13866,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 1be28db6-c5d5-4b19-a226-272915973ebe
-    m_ActionName: Character/Lock[/Mouse/middleButton]
+    m_ActionName: 'Character/Lock[/Mouse/middleButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5112153279281374252}
@@ -13872,7 +13882,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: c86c9025-276d-41e7-8a2c-243bad74ff0a
-    m_ActionName: Character/Aim[/Mouse/rightButton]
+    m_ActionName: 'Character/Aim[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5112153279281374251}
@@ -13888,7 +13898,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 63c3ee6c-3881-404d-a002-3da8e8d788ac
-    m_ActionName: Character/WeaponAction[/Mouse/leftButton]
+    m_ActionName: 'Character/WeaponAction[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5112153279281374256}
@@ -13904,7 +13914,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: f93e86b5-9881-4e20-a3dd-b46bcba3c9ff
-    m_ActionName: Character/Jump[/Keyboard/space]
+    m_ActionName: 'Character/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Character
@@ -13934,11 +13944,6 @@ MonoBehaviour:
   angularSpeed: 90
   aimTarget: {fileID: 496320825}
   rotationTreshold: 360
-  groundCheckDistance: 0.65
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  jumpForce: 2
 --- !u!4 &5114104521113258705
 Transform:
   m_ObjectHideFlags: 0
@@ -15346,8 +15351,8 @@ AimConstraint:
   m_Enabled: 1
   serializedVersion: 2
   m_Weight: 0
-  m_RotationAtRest: {x: -8.344576, y: 0.0039483095, z: -0.22690295}
-  m_RotationOffset: {x: 4.683714, y: 0.021837039, z: -0.22410966}
+  m_RotationAtRest: {x: -8.344575, y: 0.0039483095, z: -0.22690295}
+  m_RotationOffset: {x: 4.6837134, y: 0.021837039, z: -0.22410966}
   m_AimVector: {x: 0, y: 0, z: 1}
   m_UpVector: {x: 0, y: 1, z: 0}
   m_WorldUpVector: {x: 0, y: 1, z: 0}
@@ -15505,6 +15510,9 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 3
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17432,7 +17440,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 5dae16a9-9b55-4cdf-a4d9-bccddeb3d96b
-    m_ActionName: Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: 'Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9078363091417020003}
@@ -17448,7 +17456,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: bb2ad8ca-ac00-4d32-b995-0a8e9f5905c2
-    m_ActionName: Character/Look[/Mouse/delta]
+    m_ActionName: 'Character/Look[/Mouse/delta]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9106723067061961969}
@@ -17464,7 +17472,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 1be28db6-c5d5-4b19-a226-272915973ebe
-    m_ActionName: Character/Lock[/Mouse/middleButton]
+    m_ActionName: 'Character/Lock[/Mouse/middleButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9106723067061961971}
@@ -17480,7 +17488,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: c86c9025-276d-41e7-8a2c-243bad74ff0a
-    m_ActionName: Character/Aim[/Mouse/rightButton]
+    m_ActionName: 'Character/Aim[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9106723067061961970}
@@ -17496,7 +17504,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 63c3ee6c-3881-404d-a002-3da8e8d788ac
-    m_ActionName: Character/WeaponAction[/Mouse/leftButton]
+    m_ActionName: 'Character/WeaponAction[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5073685199779617336}
@@ -17512,7 +17520,15 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: f93e86b5-9881-4e20-a3dd-b46bcba3c9ff
-    m_ActionName: Character/Jump[/Keyboard/space]
+    m_ActionName: 'Character/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e86ebe28-1242-4535-af4d-4643ebb334ea
+    m_ActionName: 'Character/AtaqueLigero[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 87f54e2f-56ef-4481-b20b-382932439125
+    m_ActionName: 'Character/AtaquePesado[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Character
