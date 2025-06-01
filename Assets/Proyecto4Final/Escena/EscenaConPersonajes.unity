@@ -1583,7 +1583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1982315913299486, guid: 958cf4748c84fb948bc3400edc8005e9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4574269520425118, guid: 958cf4748c84fb948bc3400edc8005e9, type: 3}
       propertyPath: m_RootOrder
@@ -3065,7 +3065,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241819090}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eca711779894ec342a05cee6226bdcf0, type: 3}
   m_Name: 
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241819090}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f575186ad2a83245b1de9e5f0105ec4, type: 3}
   m_Name: 
@@ -3302,12 +3302,12 @@ MonoBehaviour:
   speedX:
     smoothTime: 0.5
     currentValue: 0
-    <TargetValue>k__BackingField: 1
+    <TargetValue>k__BackingField: 0
   speedY:
     smoothTime: 0.5
     currentValue: 0
     <TargetValue>k__BackingField: 1
-  angularSpeed: 90
+  angularSpeed: 0
   aimTarget: {fileID: 769723743}
   rotationTreshold: 360
 --- !u!114 &241819102
@@ -12321,7 +12321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1009478713}
-  animatorLigeros: {fileID: 9100000, guid: cbfe11cd826afa14991a6311bf8c30a6, type: 2}
+  animatorLigeros: {fileID: 9100000, guid: a0e16c18e2c78ef4f8c9286dea451d22, type: 2}
   animatorPesados: {fileID: 9100000, guid: eb5b18ef0a6900d419e06042eefc2d87, type: 2}
   katana: {fileID: 1147214571}
   espada: {fileID: 152484529}
@@ -12688,7 +12688,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009478698}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6db1684766b421d4aa64015b43730b2a, type: 3}
   m_Name: 
@@ -12780,7 +12780,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009478698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6db1684766b421d4aa64015b43730b2a, type: 3}
   m_Name: 
@@ -14153,7 +14153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1489832004896410, guid: a20a162ac11a35643bed0f3823718abb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4503961772854434, guid: a20a162ac11a35643bed0f3823718abb, type: 3}
       propertyPath: m_RootOrder
@@ -15165,7 +15165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1211862050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23310,7 +23310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1913349904
 MonoBehaviour:
   m_ObjectHideFlags: 0
