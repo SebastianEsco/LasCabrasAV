@@ -3065,7 +3065,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241819090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eca711779894ec342a05cee6226bdcf0, type: 3}
   m_Name: 
@@ -3083,7 +3083,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241819090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8684e3acb5acb554aa3cabb56fb11738, type: 3}
   m_Name: 
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241819090}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f575186ad2a83245b1de9e5f0105ec4, type: 3}
   m_Name: 
@@ -3302,11 +3302,11 @@ MonoBehaviour:
   speedX:
     smoothTime: 0.5
     currentValue: 0
-    <TargetValue>k__BackingField: 0
+    <TargetValue>k__BackingField: 1
   speedY:
     smoothTime: 0.5
     currentValue: 0
-    <TargetValue>k__BackingField: 0
+    <TargetValue>k__BackingField: 1
   angularSpeed: 90
   aimTarget: {fileID: 769723743}
   rotationTreshold: 360
