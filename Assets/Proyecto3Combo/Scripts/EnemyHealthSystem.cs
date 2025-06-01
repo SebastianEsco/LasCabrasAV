@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyHealthSystem : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class EnemyHealthSystem : MonoBehaviour
 
     [Header("UI")]
     public Slider vidaSlider;
+    
+    public bool mostrarDañoRecibido;
+    
+    public CanvasGroup dañoUI;
+    public TextMeshProUGUI damageText;
 
     void Start()
     {
@@ -46,14 +52,12 @@ public class EnemyHealthSystem : MonoBehaviour
         else
         {
             StartCoroutine(ReaccionarAlGolpe(cantidad));
+            if (mostrarDañoRecibido) StartCoroutine(MostrarDañoRecibido(cantidad));
         }
     }
 
     IEnumerator ReaccionarAlGolpe(int cantidad)
     {
-        puedeRecibirDanio = false;
-
-        // Elegir animación según la magnitud del daño
         string animacionGolpe = cantidad >= umbralDanioFuerte ? animHitHeavy : animHitLight;
         animator.CrossFade(animacionGolpe, 0.1f);
 
@@ -61,13 +65,30 @@ public class EnemyHealthSystem : MonoBehaviour
             .FirstOrDefault(c => c.name == animacionGolpe)?.length ?? 0.5f;
 
         yield return new WaitForSeconds(duracion);
-
-        animator.CrossFade("Locomotion", 0.1f); // o tu animación de patrulla
         puedeRecibirDanio = true;
+    }
+    
+    IEnumerator MostrarDañoRecibido(int cantidad)
+    {
+        damageText.text = cantidad.ToString();
+
+        dañoUI.alpha = 1f;
+
+        yield return new WaitForSeconds(1f);
+
+        while (dañoUI.alpha > 0f)
+        {
+            dañoUI.alpha -= Time.deltaTime * 2;
+            if (dañoUI.alpha < 0f)
+                dañoUI.alpha = 0f;
+
+            yield return null;
+        }
     }
 
     void Morir()
     {
+        Destroy(vidaSlider.gameObject);
         animator.SetBool("IsAlive", false);
         estaMuerto = true;
         puedeRecibirDanio = false;

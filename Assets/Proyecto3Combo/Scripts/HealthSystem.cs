@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
@@ -21,8 +23,13 @@ public class HealthSystem : MonoBehaviour
     private bool estaMuerto = false;
     public bool IsDead => estaMuerto;
     private bool puedeRecibirDanio = true;
-
+    
+    
+    public bool mostrarDañoRecibido;
+    
+    public CanvasGroup dañoUI;
     public Slider vidaSlider;
+    public TextMeshProUGUI damageText;
    
 
     void Start()
@@ -31,10 +38,7 @@ public class HealthSystem : MonoBehaviour
         if(vidaSlider != null)  vidaSlider.value = ((float)vidaActual / vidaMaxima);
     }
 
-    private void Update()
-    {
-        
-    }
+    
 
     public void DamageDone(int cantidad, Vector3 origen)
     {
@@ -50,6 +54,25 @@ public class HealthSystem : MonoBehaviour
         else
         {
             StartCoroutine(ReaccionarAlGolpe(origen));
+            if (mostrarDañoRecibido) StartCoroutine(MostrarDañoRecibido(cantidad));
+        }
+    }
+
+    IEnumerator MostrarDañoRecibido(int cantidad)
+    {
+        damageText.text = cantidad.ToString();
+
+        dañoUI.alpha = 1f;
+
+        yield return new WaitForSeconds(1f);
+
+        while (dañoUI.alpha > 0f)
+        {
+            dañoUI.alpha -= Time.deltaTime * 2;
+            if (dañoUI.alpha < 0f)
+                dañoUI.alpha = 0f;
+
+            yield return null;
         }
     }
 

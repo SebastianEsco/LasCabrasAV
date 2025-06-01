@@ -54,7 +54,7 @@ public class AttacksController : MonoBehaviour
             estaminaActual = Mathf.Min(estaminaActual, estaminaMaxima);
         }
         
-        if(estaminaSlider != null) estaminaSlider.value = estaminaActual/100;
+        if(estaminaSlider != null) estaminaSlider.value = estaminaActual/estaminaMaxima;
     }
 
     public void OnAtaqueLigero(InputAction.CallbackContext context)

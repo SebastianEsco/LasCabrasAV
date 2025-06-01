@@ -122,12 +122,15 @@ public class EnemyAI : MonoBehaviour
     void Patrullar()
     {
         agente.speed = velocidadPatrulla;
-        if (!agente.pathPending && agente.remainingDistance < 0.5f)
+
+        // Si no tiene un destino válido, establecer uno
+        if (!agente.hasPath || agente.remainingDistance < 0.5f)
         {
             indicePatrullaActual = (indicePatrullaActual + 1) % puntosPatrulla.Length;
             agente.SetDestination(puntosPatrulla[indicePatrullaActual].position);
         }
     }
+
 
     void Perseguir()
     {
@@ -147,6 +150,12 @@ public class EnemyAI : MonoBehaviour
                 agente.ResetPath();
         }
     }
+    
+    public void ReiniciarTiempoAtaque()
+    {
+        tiempoProximoAtaque = Time.time + tiempoEntreAtaques;
+    }
+
 
 
     void Atacar()
@@ -184,14 +193,6 @@ public class EnemyAI : MonoBehaviour
 
     void CambiarEstado(EstadoEnemigo nuevoEstado)
     {
-        if (estadoActual == nuevoEstado) return;
-
         estadoActual = nuevoEstado;
-
-        if (estadoActual == EstadoEnemigo.Patrullando && puntosPatrulla.Length > 0)
-        {
-            agente.speed = velocidadPatrulla;
-            agente.SetDestination(puntosPatrulla[indicePatrullaActual].position);
-        }
     }
 }
