@@ -96,7 +96,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void BuscarJugador()
+    public void BuscarJugador()
     {
         GameObject obj = GameObject.FindGameObjectWithTag(tagJugador);
         if (obj != null)
